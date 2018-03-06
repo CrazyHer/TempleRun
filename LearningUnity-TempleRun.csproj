@@ -308,6 +308,7 @@
     <Compile Include="Assets\LevelDesignUnits\LevelDesignManager.cs" />
     <Compile Include="Assets\LevelDesignUnits\LevelDesignProperties.cs" />
     <Compile Include="Assets\Player\Movement.cs" />
+    <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\Vehicles - Genius\SeaVehicle.cs" />
     <Compile Include="Assets\Vehicles - Genius\Vehicle.cs" />
   </ItemGroup>
