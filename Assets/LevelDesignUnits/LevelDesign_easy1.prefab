@@ -2349,6 +2349,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4400628263740864}
+  - component: {fileID: 114878969527287428}
   m_Layer: 0
   m_Name: LevelDesign_easy1
   m_TagString: Untagged
@@ -12436,6 +12437,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114878969527287428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1769714333832012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a72822ebc93383478135e624f4f6da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Length: 100
 --- !u!135 &135080388806028286
 SphereCollider:
   m_ObjectHideFlags: 1

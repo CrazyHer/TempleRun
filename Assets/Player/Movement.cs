@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
         IngameScreen.SetActive(true);
 
         //level design
-        _nextLevelPosition = new Vector3(0, 0, 80);
+        _nextLevelPosition = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -163,6 +163,7 @@ public class Movement : MonoBehaviour
             GameObject go = Instantiate(LevelDesignPrefab, LevelDesignParent);
 
             go.transform.position = _nextLevelPosition;
+            _nextLevelPosition.Set(0, 0, _nextLevelPosition.z + go.GetComponent<LevelDesignProperties>().Length);
         }
     }
 
