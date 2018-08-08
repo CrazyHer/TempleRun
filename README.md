@@ -1,4 +1,4 @@
-# LearningUnity-TempleRun
+# Learning Unity: Temple Run
 
 ![alt text](https://raw.githubusercontent.com/shacharoz/LearningUnity-TempleRun/master/Builds/scene13.png)
 
