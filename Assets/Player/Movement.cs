@@ -43,7 +43,6 @@ public class Movement : MonoBehaviour
     // Start is called only once in the beginning 
     void Start()
     {
-     
         _currentStrikes = Strikes;
         
         _startPosition = transform.position;
@@ -135,11 +134,9 @@ public class Movement : MonoBehaviour
                 Debug.Log("RESTART");
 
 
-                MyCanvas.SetActive(true);
-
+                CallGameOver();
 
                 //RestartGame();
-                // CallGameOver();
             }
         }
         
@@ -175,7 +172,8 @@ public class Movement : MonoBehaviour
         transform.position = _startPosition;
         _speed = Speed;
 
-       
+        MyCanvas.SetActive(false);
+        IngameScreen.SetActive(true);
     }
 
 
@@ -202,15 +200,14 @@ public class Movement : MonoBehaviour
 
 
 
-    public GameObject UiMenu;
-
     public void CallGameOver()
     {
-        if (UiMenu != null)
+        if (MyCanvas != null)
         {
-            Speed = 0.01f;
+            _speed = 0.01f;
 
-            UiMenu.SetActive(true);
+            MyCanvas.SetActive(true);
+            IngameScreen.SetActive(false);
         }
     }
 }
