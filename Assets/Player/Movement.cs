@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour
     // Start is called only once in the beginning 
     void Start()
     {
-        server = new SocketServer("0.0.0.0",2333);
+        server = new SocketServer("127.0.0.1",2333);
         server.StartListen();
 
         _currentStrikes = Strikes;
@@ -73,7 +73,7 @@ public class Movement : MonoBehaviour
 
         if (server != null && server.hasMessage())
         {
-            Debug.Log("接收到socket消息：" + server.GetMessageBuffer());
+            Debug.Log("接收到socket消息：" + server.GetMessageBuffer()+"Count:"+server.count);
         }
         
         //controlling the player left and right

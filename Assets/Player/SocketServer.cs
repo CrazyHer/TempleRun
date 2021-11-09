@@ -14,7 +14,9 @@ namespace SocketUtil
         private int _port = 0;
         private Socket _socket = null;
         private byte[] buffer = new byte[1024 * 1024 * 2];
-        private Queue<string> messageQueue = new Queue<string>();
+
+        public Queue<string> messageQueue = new Queue<string>();
+        public int count = 0;
 
         /// <summary>
         /// 构造函数
@@ -68,7 +70,7 @@ namespace SocketUtil
                 {
                     //Socket创建的新连接
                     Socket clientSocket = _socket.Accept();
-                    clientSocket.Send(Encoding.UTF8.GetBytes("服务端发送消息:"));
+                    // clientSocket.Send(Encoding.UTF8.GetBytes("服务端发送消息:"));
                     Thread thread = new Thread(ReceiveMessage);
                     thread.Start(clientSocket);
                 }
@@ -93,8 +95,11 @@ namespace SocketUtil
                     //获取从客户端发来的数据
                     int length = clientSocket.Receive(buffer);
                     var data = Encoding.UTF8.GetString(buffer, 0, length);
-                    messageQueue.Enqueue(data);
-                    Console.WriteLine("接收客户端{0},消息{1}", clientSocket.RemoteEndPoint.ToString(), data);
+                    if(data.Length>0){
+                        messageQueue.Enqueue(data);
+                        count++;
+                        Console.WriteLine("接收客户端{0},消息{1}", clientSocket.RemoteEndPoint.ToString(), data);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -107,13 +112,20 @@ namespace SocketUtil
         }
         public Boolean hasMessage()
         {
-            return messageQueue.Count() != 0;
+            if(count==0){
+                return false;
+            }
+            else{
+                return true;
+            }
+            // return  number = 0?false:true;
 
         }
         public string GetMessageBuffer()
         {
             if (hasMessage())
             {
+                count--;
                 return messageQueue.Dequeue();
             }
             else
