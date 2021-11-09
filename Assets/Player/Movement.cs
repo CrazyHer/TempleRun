@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using SocketUtil;
 
 public class Movement : MonoBehaviour
 {
@@ -40,9 +41,13 @@ public class Movement : MonoBehaviour
     public GameObject LevelDesignPrefab;
     public Transform LevelDesignParent;
 
+    private SocketServer server;
     // Start is called only once in the beginning 
     void Start()
     {
+        server = new SocketServer("0.0.0.0",2333);
+        server.StartListen();
+
         _currentStrikes = Strikes;
         
         _startPosition = transform.position;
@@ -66,7 +71,11 @@ public class Movement : MonoBehaviour
         //always move forward
         transform.Translate(Vector3.forward * Time.deltaTime * _speed);
 
-
+        if (server != null && server.hasMessage())
+        {
+            Debug.Log("接收到socket消息：" + server.GetMessageBuffer());
+        }
+        
         //controlling the player left and right
         if (useSmoothRide)
         {
@@ -102,16 +111,16 @@ public class Movement : MonoBehaviour
 
 
 
-       /*
+       
        //controlling the player up and down
        if (Input.GetKey(KeyCode.UpArrow))
        {
-           transform.Translate(Vector3.forward* Time.deltaTime * speed);
+           transform.Translate(Vector3.up* Time.deltaTime * _speed * 10);
        }
-       
+       /*
        if (Input.GetKey(KeyCode.DownArrow))
        {
-           transform.Translate(Vector3.back * Time.deltaTime * speed);
+           transform.Translate(Vector3.back * Time.deltaTime * _speed);
        }
        */
     }
@@ -120,10 +129,10 @@ public class Movement : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("I collide with something ");
+        Debug.Log("I collide with something ");
         if (other.tag == "OBSTACLE")
         {
-            //Debug.Log(" I HIT OBSTACLE :) ");
+            Debug.Log(" I HIT OBSTACLE :) ");
             //take care of player health
             _currentStrikes = _currentStrikes - 1;
 
@@ -182,7 +191,7 @@ public class Movement : MonoBehaviour
 
 
 
-    /*
+    
     public void RestartGame1()
     {
         Debug.Log(" RESTARTING ");
@@ -194,9 +203,9 @@ public class Movement : MonoBehaviour
         _totalScore = 0;
 
         //set speed again
-        //Speed = 3;
+       Speed = 3;
     }
-    */
+    
 
 
 

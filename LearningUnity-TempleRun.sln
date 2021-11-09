@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningUnity-TempleRun", "LearningUnity-TempleRun.csproj", "{3C3A8FBB-C882-9D40-304B-BDBD0A18BD32}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{8958B233-2B9E-60D3-2022-01CB29DD1F19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3C3A8FBB-C882-9D40-304B-BDBD0A18BD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C3A8FBB-C882-9D40-304B-BDBD0A18BD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C3A8FBB-C882-9D40-304B-BDBD0A18BD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C3A8FBB-C882-9D40-304B-BDBD0A18BD32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8958B233-2B9E-60D3-2022-01CB29DD1F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8958B233-2B9E-60D3-2022-01CB29DD1F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8958B233-2B9E-60D3-2022-01CB29DD1F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8958B233-2B9E-60D3-2022-01CB29DD1F19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
