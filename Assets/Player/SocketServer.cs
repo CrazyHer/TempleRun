@@ -19,10 +19,10 @@ namespace SocketUtil
         public int count = 0;
 
         /// <summary>
-        /// ¹¹Ôìº¯Êı
+        /// æ„é€ å‡½æ•°
         /// </summary>
-        /// <param name="ip">¼àÌıµÄIP</param>
-        /// <param name="port">¼àÌıµÄ¶Ë¿Ú</param>
+        /// <param name="ip">ç›‘å¬çš„IP</param>
+        /// <param name="port">ç›‘å¬çš„ç«¯å£</param>
         public SocketServer(string ip, int port)
         {
             this._ip = ip;
@@ -38,29 +38,29 @@ namespace SocketUtil
         {
             try
             {
-                //1.0 ÊµÀı»¯Ì×½Ó×Ö(IP4Ñ°ÕÒĞ­Òé,Á÷Ê½Ğ­Òé,TCPĞ­Òé)
+                //1.0 å®ä¾‹åŒ–å¥—æ¥å­—(IP4å¯»æ‰¾åè®®,æµå¼åè®®,TCPåè®®)
                 _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                //2.0 ´´½¨IP¶ÔÏó
+                //2.0 åˆ›å»ºIPå¯¹è±¡
                 IPAddress address = IPAddress.Parse(_ip);
-                //3.0 ´´½¨ÍøÂç¶Ë¿Ú,°üÀ¨ipºÍ¶Ë¿Ú
+                //3.0 åˆ›å»ºç½‘ç»œç«¯å£,åŒ…æ‹¬ipå’Œç«¯å£
                 IPEndPoint endPoint = new IPEndPoint(address, _port);
-                //4.0 °ó¶¨Ì×½Ó×Ö
+                //4.0 ç»‘å®šå¥—æ¥å­—
                 _socket.Bind(endPoint);
-                //5.0 ÉèÖÃ×î´óÁ¬½ÓÊı
+                //5.0 è®¾ç½®æœ€å¤§è¿æ¥æ•°
                 _socket.Listen(int.MaxValue);
-                Console.WriteLine("¼àÌı{0}ÏûÏ¢³É¹¦", _socket.LocalEndPoint.ToString());
-                //6.0 ¿ªÊ¼¼àÌı
+                Console.WriteLine("ç›‘å¬{0}æ¶ˆæ¯æˆåŠŸ", _socket.LocalEndPoint.ToString());
+                //6.0 å¼€å§‹ç›‘å¬
                 Thread thread = new Thread(ListenClientConnect);
                 thread.Start();
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine("³ö´í,{0}", ex.ToString());
+                Console.WriteLine("å‡ºé”™,{0}", ex.ToString());
             }
         }
         /// <summary>
-        /// ¼àÌı¿Í»§¶ËÁ¬½Ó
+        /// ç›‘å¬å®¢æˆ·ç«¯è¿æ¥
         /// </summary>
         private void ListenClientConnect()
         {
@@ -68,23 +68,23 @@ namespace SocketUtil
             {
                 while (true)
                 {
-                    //Socket´´½¨µÄĞÂÁ¬½Ó
+                    //Socketåˆ›å»ºçš„æ–°è¿æ¥
                     Socket clientSocket = _socket.Accept();
-                    // clientSocket.Send(Encoding.UTF8.GetBytes("·şÎñ¶Ë·¢ËÍÏûÏ¢:"));
+                    // clientSocket.Send(Encoding.UTF8.GetBytes("æœåŠ¡ç«¯å‘é€æ¶ˆæ¯:"));
                     Thread thread = new Thread(ReceiveMessage);
                     thread.Start(clientSocket);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("³ö´í,{0}", ex.ToString());
+                Console.WriteLine("å‡ºé”™,{0}", ex.ToString());
             }
         }
 
         /// <summary>
-        /// ½ÓÊÕ¿Í»§¶ËÏûÏ¢
+        /// æ¥æ”¶å®¢æˆ·ç«¯æ¶ˆæ¯
         /// </summary>
-        /// <param name="socket">À´×Ô¿Í»§¶ËµÄsocket</param>
+        /// <param name="socket">æ¥è‡ªå®¢æˆ·ç«¯çš„socket</param>
         private void ReceiveMessage(object socket)
         {
             Socket clientSocket = (Socket)socket;
@@ -92,13 +92,13 @@ namespace SocketUtil
             {
                 try
                 {
-                    //»ñÈ¡´Ó¿Í»§¶Ë·¢À´µÄÊı¾İ
+                    //è·å–ä»å®¢æˆ·ç«¯å‘æ¥çš„æ•°æ®
                     int length = clientSocket.Receive(buffer);
                     var data = Encoding.UTF8.GetString(buffer, 0, length);
                     if(data.Length>0){
                         messageQueue.Enqueue(data);
                         count++;
-                        Console.WriteLine("½ÓÊÕ¿Í»§¶Ë{0},ÏûÏ¢{1}", clientSocket.RemoteEndPoint.ToString(), data);
+                        Console.WriteLine("æ¥æ”¶å®¢æˆ·ç«¯{0},æ¶ˆæ¯{1}", clientSocket.RemoteEndPoint.ToString(), data);
                     }
                 }
                 catch (Exception ex)

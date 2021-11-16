@@ -113,9 +113,10 @@ public class Movement : MonoBehaviour
 
        
        //controlling the player up and down
-       if (Input.GetKey(KeyCode.UpArrow))
+       if (Input.GetKey(KeyCode.UpArrow)&&this.GetComponent<Rigidbody>().velocity.y==0)
        {
-           transform.Translate(Vector3.up* Time.deltaTime * _speed * 10);
+        //    transform.Translate(Vector3.up* Time.deltaTime * _speed * 5);
+        this.GetComponent<Rigidbody>().velocity = Vector3.up * 15;
        }
        /*
        if (Input.GetKey(KeyCode.DownArrow))
