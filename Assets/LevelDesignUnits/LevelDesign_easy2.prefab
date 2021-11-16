@@ -6819,7 +6819,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409314301007296}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 0.18000007, z: 52.29}
+  m_LocalPosition: {x: -1, y: 0.18000007, z: 57.92}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4188639023055878}
@@ -11889,7 +11889,7 @@ GameObject:
   - component: {fileID: 4400628263740864}
   - component: {fileID: 114878969527287428}
   m_Layer: 0
-  m_Name: LevelDesign_easy1
+  m_Name: LevelDesign_easy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
