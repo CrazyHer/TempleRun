@@ -75,18 +75,22 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("接收到socket消息：" + server.GetMessageBuffer()+"Count:"+server.count);
         }
-        
+        if(this.GetComponent<Transform>().position.y<=0){
+            CallGameOver();
+        }
+
+
         //controlling the player left and right
         if (useSmoothRide)
         {
-            if (Input.GetKey(KeyCode.LeftArrow)&&this.GetComponent<Transform>().position.x>=-1.2)
+            if (Input.GetKey(KeyCode.LeftArrow))
             {
                 transform.Translate(Vector3.left * Time.deltaTime * _speed);
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow)&&this.GetComponent<Transform>().position.x>=-1.2)
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 transform.Translate(Vector3.left);
             }
@@ -94,14 +98,14 @@ public class Movement : MonoBehaviour
 
         if (useSmoothRide)
         {
-            if (Input.GetKey(KeyCode.RightArrow)&&this.GetComponent<Transform>().position.x<=1.2)
+            if (Input.GetKey(KeyCode.RightArrow))
             {
                 transform.Translate(Vector3.right * Time.deltaTime * _speed);
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow)&&this.GetComponent<Transform>().position.x<=1.2)
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 transform.Translate(Vector3.right);
             }
