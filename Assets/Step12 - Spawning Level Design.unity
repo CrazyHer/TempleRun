@@ -842,6 +842,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelDesign_easy1
       objectReference: {fileID: 0}
+    - target: {fileID: 4196260560872525, guid: 9be5928871b3fda47ade5d625dda73dd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196260560872525, guid: 9be5928871b3fda47ade5d625dda73dd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196260560872525, guid: 9be5928871b3fda47ade5d625dda73dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196261754681549, guid: 9be5928871b3fda47ade5d625dda73dd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196261754681549, guid: 9be5928871b3fda47ade5d625dda73dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4400628263740864, guid: 9be5928871b3fda47ade5d625dda73dd, type: 3}
       propertyPath: m_RootOrder
       value: 0

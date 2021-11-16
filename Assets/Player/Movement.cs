@@ -79,14 +79,14 @@ public class Movement : MonoBehaviour
         //controlling the player left and right
         if (useSmoothRide)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKey(KeyCode.LeftArrow)&&this.GetComponent<Transform>().position.x>=-1.2)
             {
                 transform.Translate(Vector3.left * Time.deltaTime * _speed);
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow)&&this.GetComponent<Transform>().position.x>=-1.2)
             {
                 transform.Translate(Vector3.left);
             }
@@ -94,14 +94,14 @@ public class Movement : MonoBehaviour
 
         if (useSmoothRide)
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow)&&this.GetComponent<Transform>().position.x<=1.2)
             {
                 transform.Translate(Vector3.right * Time.deltaTime * _speed);
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow)&&this.GetComponent<Transform>().position.x<=1.2)
             {
                 transform.Translate(Vector3.right);
             }
