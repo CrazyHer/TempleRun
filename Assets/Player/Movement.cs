@@ -76,7 +76,8 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("接收到socket消息：" + server.GetMessageBuffer()+"Count:"+server.count);
         }
-        if(this.GetComponent<Transform>().position.y<=0){
+        if(this.GetComponent<Transform>().position.y<=-0.1){
+            //Debug.Log(this.GetComponent<Transform>().position.y);
             CallGameOver();
         }
 
@@ -123,12 +124,22 @@ public class Movement : MonoBehaviour
         //    transform.Translate(Vector3.up* Time.deltaTime * _speed * 5);
         this.GetComponent<Rigidbody>().velocity = Vector3.up * 15;
        }
-       /*
-       if (Input.GetKey(KeyCode.DownArrow))
-       {
-           transform.Translate(Vector3.back * Time.deltaTime * _speed);
-       }
-       */
+
+        if (useSmoothRide)
+        {
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                //transform.Translate(Vector3.back * Time.deltaTime * _speed);
+                this.transform.Rotate(Vector3.up * Time.deltaTime * _speed);
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                this.transform.Rotate(Vector3.up * 90);
+            }
+        }
     }
 
 

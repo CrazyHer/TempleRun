@@ -1,6 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.TestRunner", "UnityEngine.TestRunner.csproj", "{B690DD25-7ED3-48F6-FEF6-5DB3F6D0CB43}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Timeline", "Unity.Timeline.csproj", "{C1A5A6F4-5775-464F-FE66-D073DF6EAD4E}"
@@ -41,12 +42,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.TextMeshPro", "Unity.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.Player.csproj", "{A51F4628-5733-64D0-3B85-A45153F49109}"
 EndProject
+=======
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{185AFD5A-9FC2-9159-7692-4FD596DD4B74}"
+EndProject
+>>>>>>> dfcaf43be4d8838acf097a80d09500385286ffba
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD
 		{B690DD25-7ED3-48F6-FEF6-5DB3F6D0CB43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B690DD25-7ED3-48F6-FEF6-5DB3F6D0CB43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B690DD25-7ED3-48F6-FEF6-5DB3F6D0CB43}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,10 +69,13 @@ Global
 		{76443F78-A88E-5E4A-2C30-C0731F792934}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76443F78-A88E-5E4A-2C30-C0731F792934}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76443F78-A88E-5E4A-2C30-C0731F792934}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> dfcaf43be4d8838acf097a80d09500385286ffba
 		{185AFD5A-9FC2-9159-7692-4FD596DD4B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{185AFD5A-9FC2-9159-7692-4FD596DD4B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{185AFD5A-9FC2-9159-7692-4FD596DD4B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{185AFD5A-9FC2-9159-7692-4FD596DD4B74}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{664AEFE6-708E-2155-0EBF-5FDB0545E758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{664AEFE6-708E-2155-0EBF-5FDB0545E758}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{664AEFE6-708E-2155-0EBF-5FDB0545E758}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -127,6 +136,8 @@ Global
 		{A51F4628-5733-64D0-3B85-A45153F49109}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A51F4628-5733-64D0-3B85-A45153F49109}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A51F4628-5733-64D0-3B85-A45153F49109}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> dfcaf43be4d8838acf097a80d09500385286ffba
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
