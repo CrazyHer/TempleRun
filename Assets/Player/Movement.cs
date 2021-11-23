@@ -59,6 +59,7 @@ public class Movement : MonoBehaviour
 
         //level design
         _nextLevelPosition = new Vector3(0, 0, 0);
+        lastLevels = new List<GameObject>(10);
     }
 
     // Update is called once per frame
@@ -171,13 +172,19 @@ public class Movement : MonoBehaviour
 
         if (other.tag == "LOAD_NEW_LEVEL")
         {
+            if (lastLevels.Count>2)
+            {
+                Destroy(lastLevels[lastLevels.Count-1]);
+                lastLevels.RemoveAt(lastLevels.Count - 1);
+                Debug.Log("I destroyed a level design!!!");
+            }
             GameObject go = Instantiate(LevelDesignPrefab, LevelDesignParent);
-
             go.transform.position = _nextLevelPosition;
             _nextLevelPosition.Set(0, 0, _nextLevelPosition.z + go.GetComponent<LevelDesignProperties>().Length);
+            lastLevels.Insert(0,go);
         }
     }
-
+    private List<GameObject> lastLevels;
     private Vector3 _nextLevelPosition;
     
     public void RestartGame()

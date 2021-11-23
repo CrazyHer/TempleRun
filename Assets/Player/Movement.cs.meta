@@ -1,11 +1,18 @@
 fileFormatVersion: 2
 guid: 7b0468fe79e4c1c4f9d6d2d5fc0c356d
-timeCreated: 1517860734
-licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - MyCanvas: {instanceID: 0}
+  - IngameScreen: {instanceID: 0}
+  - ScoreText: {instanceID: 0}
+  - LevelDesignPrefab: {instanceID: 0}
+  - LevelDesignParent: {instanceID: 0}
+  - LevelDesign_turnLeft: {fileID: 1769714333832012, guid: d7bfab4c9d949834fb152e5bcabdce0f,
+      type: 3}
+  - LevelDesign_turnRight: {fileID: 1769714333832012, guid: 7ba468f8d414ce944b22f36ff9b40293,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
