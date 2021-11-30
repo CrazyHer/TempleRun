@@ -40,6 +40,7 @@ public class Movement : MonoBehaviour
     //Level Design Elements
     public GameObject LevelDesignPrefab;
     public Transform LevelDesignParent;
+    public GameObject InitLevelDesign;
 
     private SocketServer server;
     // Start is called only once in the beginning 
@@ -59,7 +60,10 @@ public class Movement : MonoBehaviour
 
         //level design
         _nextLevelPosition = new Vector3(0, 0, 0);
-        lastLevels = new List<GameObject>(10);
+        lastLevels = new List<GameObject>(10)
+        {
+            InitLevelDesign
+        };
     }
 
     // Update is called once per frame
@@ -183,7 +187,7 @@ public class Movement : MonoBehaviour
 
         if (other.tag == "LOAD_NEW_LEVEL")
         {
-            if (lastLevels.Count>2)
+            if (lastLevels.Count>=2)
             {
                 Destroy(lastLevels[lastLevels.Count-1]);
                 lastLevels.RemoveAt(lastLevels.Count - 1);

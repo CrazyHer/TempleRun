@@ -24,4 +24,8 @@ public class LevelDesignManager : MonoBehaviour {
 	void Update () {
 		
 	}
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnter:" + other.tag);
+    }
 }
