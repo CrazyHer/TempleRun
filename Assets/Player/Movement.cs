@@ -46,9 +46,9 @@ public class Movement : MonoBehaviour
     // Start is called only once in the beginning 
     void Start()
     {
-        server = new SocketServer("127.0.0.1",2333);
+        server = new SocketServer("10.27.137.33", 2333);
         server.StartListen();
-
+        Debug.Log("Socket服务器已启动监听");
         _currentStrikes = Strikes;
         
         _startPosition = transform.position;
@@ -78,8 +78,10 @@ public class Movement : MonoBehaviour
 
         if (server != null && server.hasMessage())
         {
-            Debug.Log("接收到socket消息：" + server.GetMessageBuffer()+"Count:"+server.count);
+            var action = server.GetMessageBuffer();
+            Debug.Log("接收到socket消息：\n"+action);
         }
+
         if(this.GetComponent<Transform>().position.y<=-0.1){
             //Debug.Log(this.GetComponent<Transform>().position.y);
             CallGameOver();
@@ -150,18 +152,16 @@ public class Movement : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("I collide with something ");
+        //Debug.Log("I collide with something ");
         if (other.tag == "OBSTACLE")
         {
-            Debug.Log(" I HIT OBSTACLE :) ");
+            //Debug.Log(" I HIT OBSTACLE :) ");
             //take care of player health
             _currentStrikes = _currentStrikes - 1;
 
             if (_currentStrikes <= 0)
             {
-                Debug.Log(" GAME OVER ");
-                
-                Debug.Log("RESTART");
+
 
 
                 CallGameOver();
@@ -173,7 +173,6 @@ public class Movement : MonoBehaviour
         //collecting (hitting) a pickup
         if (other.tag == "PICKUP")
         {
-            Debug.Log(" I HIT PICKUP :) ");
 
             Destroy(other.gameObject);
 
@@ -191,7 +190,6 @@ public class Movement : MonoBehaviour
             {
                 Destroy(lastLevels[lastLevels.Count-1]);
                 lastLevels.RemoveAt(lastLevels.Count - 1);
-                Debug.Log("I destroyed a level design!!!");
             }
             GameObject go = Instantiate(LevelDesignPrefab, LevelDesignParent);
             go.transform.position = _nextLevelPosition;
@@ -221,7 +219,6 @@ public class Movement : MonoBehaviour
     
     public void RestartGame1()
     {
-        Debug.Log(" RESTARTING ");
 
         //put player in start position
         transform.position = _startPosition;
