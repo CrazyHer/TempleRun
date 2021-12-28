@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{F3263D8C-D8CF-7018-7E36-AFAF52BF0A47}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -204,6 +205,8 @@
     <None Include="Library\PackageCache\com.unity.collab-proxy@1.13.5\Editor\Collaborate\Assets\Layouts\MainPageView.uxml" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System.Xaml" />
     <Reference Include="UnityEngine">
       <HintPath>D:\Unity\Unity 2020.3.21f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

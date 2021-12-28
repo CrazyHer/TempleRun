@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using SocketUtil;
+using System;
 
 public class Movement : MonoBehaviour
 {
@@ -59,11 +60,13 @@ public class Movement : MonoBehaviour
         IngameScreen.SetActive(true);
 
         //level design
+
         _nextLevelPosition = new Vector3(0, 0, 0);
         lastLevels = new List<GameObject>(10)
         {
             InitLevelDesign
         };
+        CallGameOver();
     }
 
     // Update is called once per frame
@@ -74,78 +77,62 @@ public class Movement : MonoBehaviour
 
 
         //always move forward
-        transform.Translate(Vector3.forward * Time.deltaTime * _speed);
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
 
         if (server != null && server.hasMessage())
         {
-            var action = server.GetMessageBuffer();
-            Debug.Log("接收到socket消息：\n"+action);
+            var rawMessage = server.GetMessageBuffer();
+          //  Debug.LogError(rawMessage);
+            var message = rawMessage.Split(',');
+
+
+            try
+            {
+                double position = double.Parse(message[0]);
+                int actionType = int.Parse(message[1]);
+                Debug.Log(rawMessage);
+                //controlling the player up and down
+                if (actionType == 3 && this.GetComponent<Rigidbody>().velocity.y == 0)
+                {
+                    //    transform.Translate(Vector3.up* Time.deltaTime * _speed * 5);
+                    this.GetComponent<Rigidbody>().velocity = Vector3.up * 15;
+                }
+                this.GetComponent<Rigidbody>().position = Vector3.right * 3.5f / 2 * (float)position;
+                transform.position = new Vector3(3.5f / 2 * (float)position, transform.position.y, transform.position.z);
+
+                if (MyCanvas.activeInHierarchy) // 如果处于菜单界面
+                {
+                    if(actionType == 2)
+                    {
+                        RestartGame();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError(ex);
+                Debug.LogError("rawMessage: " + rawMessage);
+            }
+
+
+
+
+            //if (Input.GetKey(KeyCode.LeftArrow))
+            //{
+            //    transform.Translate(Vector3.left * Time.deltaTime * _speed);
+            //}
+            //if (Input.GetKey(KeyCode.RightArrow))
+            //{
+            //    transform.Translate(Vector3.right * Time.deltaTime * _speed);
+            //}
+
         }
 
-        if(this.GetComponent<Transform>().position.y<=-0.1){
+        if (this.GetComponent<Transform>().position.y<=-0.1){
             //Debug.Log(this.GetComponent<Transform>().position.y);
             CallGameOver();
         }
-
-
-        //controlling the player left and right
-        if (useSmoothRide)
-        {
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                transform.Translate(Vector3.left * Time.deltaTime * _speed);
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                transform.Translate(Vector3.left);
-            }
-        }
-
-        if (useSmoothRide)
-        {
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                transform.Translate(Vector3.right * Time.deltaTime * _speed);
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                transform.Translate(Vector3.right);
-            }
-        }
-
         
-
-
-
-       
-       //controlling the player up and down
-       if (Input.GetKey(KeyCode.UpArrow)&&this.GetComponent<Rigidbody>().velocity.y==0)
-       {
-        //    transform.Translate(Vector3.up* Time.deltaTime * _speed * 5);
-        this.GetComponent<Rigidbody>().velocity = Vector3.up * 15;
-       }
-
-        if (useSmoothRide)
-        {
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                //transform.Translate(Vector3.back * Time.deltaTime * _speed);
-                this.transform.Rotate(Vector3.up * Time.deltaTime * _speed);
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                this.transform.Rotate(Vector3.up * 90);
-            }
-        }
     }
 
 
@@ -192,8 +179,9 @@ public class Movement : MonoBehaviour
                 lastLevels.RemoveAt(lastLevels.Count - 1);
             }
             GameObject go = Instantiate(LevelDesignPrefab, LevelDesignParent);
-            go.transform.position = _nextLevelPosition;
             _nextLevelPosition.Set(0, 0, _nextLevelPosition.z + go.GetComponent<LevelDesignProperties>().Length);
+            go.transform.position = _nextLevelPosition;
+
             lastLevels.Insert(0,go);
         }
     }
@@ -202,10 +190,24 @@ public class Movement : MonoBehaviour
     
     public void RestartGame()
     {
-        _currentStrikes = Strikes;
-        transform.position = _startPosition;
-        _speed = Speed;
+        while (lastLevels.Count > 0)
+        {
+            Destroy(lastLevels[lastLevels.Count - 1]);
+            lastLevels.RemoveAt(lastLevels.Count - 1);
+        }
+        GameObject go = Instantiate(LevelDesignPrefab, LevelDesignParent);
+        _nextLevelPosition.Set(0, 0, 0);
+        go.transform.position = _nextLevelPosition;
 
+        lastLevels.Insert(0, go);
+        //zero score
+        _totalScore = 0;
+
+        //set speed again
+        _speed = Speed;
+        _currentStrikes = Strikes;
+        //put player in start position
+        transform.position = _startPosition;
         MyCanvas.SetActive(false);
         IngameScreen.SetActive(true);
     }
@@ -213,31 +215,11 @@ public class Movement : MonoBehaviour
 
 
 
-
-
-
-    
-    public void RestartGame1()
-    {
-
-        //put player in start position
-        transform.position = _startPosition;
-
-        //zero score
-        _totalScore = 0;
-
-        //set speed again
-       Speed = 3;
-    }
-    
-
-
-
     public void CallGameOver()
     {
         if (MyCanvas != null)
         {
-            _speed = 0.01f;
+            _speed = 0;
 
             MyCanvas.SetActive(true);
             IngameScreen.SetActive(false);
