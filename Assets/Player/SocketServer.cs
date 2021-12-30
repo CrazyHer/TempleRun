@@ -174,8 +174,6 @@ namespace SocketUtil
             EndPoint point = new IPEndPoint(ipaddress, port);
             tcpClient.Connect(point);
             Console.WriteLine("connected");
-
-
         }
         public void send(string a)
         {

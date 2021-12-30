@@ -1,0 +1,15 @@
+E:\Project\人机交互实验\TempleRun\Kinnect\bin\AnyCPU\Release\BodyBasics-WPF.exe.config
+E:\Project\人机交互实验\TempleRun\Kinnect\bin\AnyCPU\Release\BodyBasics-WPF.exe
+E:\Project\人机交互实验\TempleRun\Kinnect\bin\AnyCPU\Release\BodyBasics-WPF.pdb
+E:\Project\人机交互实验\TempleRun\Kinnect\bin\AnyCPU\Release\Microsoft.Kinect.dll
+E:\Project\人机交互实验\TempleRun\Kinnect\bin\AnyCPU\Release\Microsoft.Kinect.xml
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\MainWindow.baml
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\MainWindow.g.cs
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\BodyBasics-WPF_MarkupCompile.cache
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\BodyBasics-WPF.g.resources
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\Microsoft.Samples.Kinect.BodyBasics.Properties.Resources.resources
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\BodyBasics-WPF.csproj.GenerateResource.cache
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\BodyBasics-WPF.csproj.CoreCompileInputs.cache
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\BodyBasics-WPF.csproj.CopyComplete
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\BodyBasics-WPF.exe
+E:\Project\人机交互实验\TempleRun\Kinnect\obj\Release\BodyBasics-WPF.pdb

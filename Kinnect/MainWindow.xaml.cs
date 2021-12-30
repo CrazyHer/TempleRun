@@ -316,6 +316,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
                 this.kinectSensor.Close();
                 this.kinectSensor = null;
             }
+            Environment.Exit(0);
         }
 
         private void TestFrame()
@@ -545,7 +546,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
         
         public  void DoChoose_Xposition()
         {
-             SocketClient client = new SocketClient("1.116.132.94", 6001);
+             SocketClient client = new SocketClient("127.0.0.1", 2333);
            // SocketClient client = new SocketClient("127.0.0.1",8888);
             //SocketClient client = new SocketClient("10.27.130.123", 2333);
 
@@ -583,7 +584,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
                 
                 client.send(a.ToString()+",0,");
                 //Console.WriteLine("识别位置");//测试
-                Thread.Sleep(50);
+                Thread.Sleep(33);
             }
         }
 
@@ -596,7 +597,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
         {
 
            // SocketClient client1 = new SocketClient("1.116.132.94", 6001);
-            SocketClient client1 = new SocketClient("10.27.137.33",2333);
+            SocketClient client1 = new SocketClient("127.0.0.1",2333);
            //SocketClient client1 = new SocketClient("127.0.0.1", 8888);
 
             Console.WriteLine("动作发送开始");
@@ -808,5 +809,7 @@ namespace Microsoft.Samples.Kinect.BodyBasics
             this.StatusText = this.kinectSensor.IsAvailable ? Properties.Resources.RunningStatusText
                                                             : Properties.Resources.SensorNotAvailableStatusText;
         }
+
+      
     }
 }

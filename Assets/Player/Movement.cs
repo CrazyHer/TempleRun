@@ -47,9 +47,10 @@ public class Movement : MonoBehaviour
     // Start is called only once in the beginning 
     void Start()
     {
-        server = new SocketServer("10.27.137.33", 2333);
+        server = new SocketServer("127.0.0.1", 2333);
         server.StartListen();
         Debug.Log("Socket服务器已启动监听");
+        // ...进行后续的初始化操作
         _currentStrikes = Strikes;
         
         _startPosition = transform.position;
@@ -82,9 +83,9 @@ public class Movement : MonoBehaviour
         if (server != null && server.hasMessage())
         {
             var rawMessage = server.GetMessageBuffer();
+            // ...解析消息并进行相应的响应处理操作
           //  Debug.LogError(rawMessage);
             var message = rawMessage.Split(',');
-
 
             try
             {
@@ -128,7 +129,7 @@ public class Movement : MonoBehaviour
 
         }
 
-        if (this.GetComponent<Transform>().position.y<=-0.1){
+        if (this.GetComponent<Transform>().position.y<=-0.2){
             //Debug.Log(this.GetComponent<Transform>().position.y);
             CallGameOver();
         }
@@ -173,16 +174,16 @@ public class Movement : MonoBehaviour
 
         if (other.tag == "LOAD_NEW_LEVEL")
         {
-            if (lastLevels.Count>=2)
+            if (lastLevels.Count>=2) // 销毁上一个已经走过的地块的实例
             {
                 Destroy(lastLevels[lastLevels.Count-1]);
                 lastLevels.RemoveAt(lastLevels.Count - 1);
             }
-            GameObject go = Instantiate(LevelDesignPrefab, LevelDesignParent);
-            _nextLevelPosition.Set(0, 0, _nextLevelPosition.z + go.GetComponent<LevelDesignProperties>().Length);
+            GameObject go = Instantiate(LevelDesignPrefab, LevelDesignParent); // 生成新地块实例
+            _nextLevelPosition.Set(0, 0, _nextLevelPosition.z + go.GetComponent<LevelDesignProperties>().Length); // 设置坐标为在当前地块的前方
             go.transform.position = _nextLevelPosition;
 
-            lastLevels.Insert(0,go);
+            lastLevels.Insert(0,go); // 将新生成的地块加入进来
         }
     }
     private List<GameObject> lastLevels;
